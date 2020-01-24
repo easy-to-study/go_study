@@ -1,0 +1,11 @@
+<h1 style="background: #c2edff;padding: 0.5em;">Wikiページ</h1>
+<h2 style="background: linear-gradient(transparent 70%, #a7d6ff 70%)">新規作成方法</h2>
+<div>
+  "/edit/title(最初の文字は英数字)"で新しいページと説明文を作成することができます.
+</div>
+<h2 style="background: linear-gradient(transparent 70%, #a7d6ff 70%)">ページ</h2>
+<div>
+  {{range .}}
+  <p style="border:#d0d0d0 ridge 5px;"><a href="/view/{{. |html|}}">{{.}}</a>[<a href="/edit/{{. |html|}}">edit</a>]</p>
+  {{end}}
+</div>
