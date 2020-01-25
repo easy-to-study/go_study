@@ -1,0 +1,4 @@
+# github.com/go-sql-driver/mysql v1.5.0
+github.com/go-sql-driver/mysql
+# github.com/tealeg/xlsx v1.0.5
+github.com/tealeg/xlsx
