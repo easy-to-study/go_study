@@ -7,13 +7,9 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
-
-	// "database/sql"
-	// "fmt"
-
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/tealeg/xlsx" // 実装した設定パッケージの読み込み
-	// "github.com/sataga/go_study/qiita/excel/xlsx/sample3/model"
+	"github.com/sataga/go_study/qiita/excel/xlsx/sample3/model"
 	"github.com/sataga/go_study/qiita/excel/xlsx/sample3/config"
 )
 
@@ -89,6 +85,25 @@ func main() {
 	} else {
 		fmt.Println("データベース接続成功！")
 	}
+
+	// INSERTの実行
+    id, err := model.InsertUser("USER-0001", "山田 hoge郎", "pass", db)
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    fmt.Printf("登録されたユーザのIDは【%d】です。\n", id)
+ 
+    // SELECTの実行
+    user, err := model.SelectUserById(id, db)
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    fmt.Printf("SELECTされたユーザ情報は以下の通りです。\n")
+    fmt.Printf("[ID] %s\n", user.Id)
+    fmt.Printf("[アカウント] %s\n", user.Account)
+    fmt.Printf("[名前] %s\n", user.Name)
+    fmt.Printf("[パスワード] %s\n", user.Passwd)
+    fmt.Printf("[登録日] %s\n", user.Created)
 }
 
 func test() {
