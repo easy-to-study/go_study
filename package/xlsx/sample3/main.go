@@ -59,6 +59,7 @@ func outputData(row *xlsx.Row, newsheet *xlsx.Sheet, r int) {
 
 func main() {
 	model.DbConnect()
+	test()
 }
 
 func test() {
