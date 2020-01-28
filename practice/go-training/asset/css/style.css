@@ -22,3 +22,34 @@
   background: #668ad8;
   border-bottom: solid 4px #627295;
 }
+
+/* -------------------- *
+ * 一覧リストのスタイル
+ * ------ */
+table.list {
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0;
+    border: 1px solid #3c6690;
+  }
+   
+  table.list th{
+    text-align: center;
+    color:white;
+    background: linear-gradient(#829ebc,#225588);
+    /*border: 1px solid #3c6690;*/
+    border-width: 1px 0px;
+    border-color: #3c6690;
+    border-style: solid;
+    padding: 10px 0;
+  }
+   
+  table.list td{
+    text-align: center;
+    /*border: 1px solid #a8b7c5;*/
+    border-width: 1px 0px;
+    border-color: #a8b7c5;
+    border-style: solid;
+    border-top:none;
+    padding: 10px 0;
+  }
