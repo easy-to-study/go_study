@@ -1,0 +1,24 @@
+/* -------------- *
+ * ボタンスタイル
+ * ------ */
+.btn-push {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+  color: #FFF;
+  background: #696969;
+  border-bottom: solid 4px #333333;
+  border-radius: 4px;
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+}
+.btn-push:active {
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.btn-push-blue {
+  background: #668ad8;
+  border-bottom: solid 4px #627295;
+}

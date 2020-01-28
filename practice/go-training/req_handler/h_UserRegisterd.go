@@ -59,7 +59,7 @@ func insertPostedUser(req *http.Request) string {
  
     // POST値を渡してINSERT処理を実行
     _, err = query.InsertUser(req.FormValue("account"), req.FormValue("name"), hashedPwd, db)
-    if err != nil {x
+    if err != nil {
         result = "ユーザ情報の登録に失敗しました。"
     }
  

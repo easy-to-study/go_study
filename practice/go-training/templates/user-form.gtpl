@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../asset/css/style.css">
+</head>
 <body>
   <h2>新規ユーザの登録</h2>
   <form action="user-confirm" method="post">
