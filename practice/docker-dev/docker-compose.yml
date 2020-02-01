@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  gin:
+    build:
+      context: .
+      target: build-stage
+    depends_on:
+      - db
+    volumes:
+      - ./:/go/go_dev
+    command: realize start --run
+    ports:
+      - "19001:9000"
+      - "3000:3000"
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
+  db:
+    build: ./docker/db
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./docker/db/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: "example"
+      MYSQL_DATABASE: "test"
