@@ -9,8 +9,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/t0w4/toDoListBackend/model"
-	"github.com/t0w4/toDoListBackend/view"
+	"github.com/easy-to-study/go_study/practice/toDoListBackend/model"
+	"github.com/easy-to-study/go_study/practice/toDoListBackend/view"
 )
 
 // TaskController require *sql.Db to initialize

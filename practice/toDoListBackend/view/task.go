@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/t0w4/toDoListBackend/model"
+	"github.com/easy-to-study/go_study/practice/toDoListBackend/model"
 )
 
 type tasksResponse struct {
