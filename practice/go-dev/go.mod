@@ -1,4 +1,4 @@
-module github.com/fumiya-uehara/go_dev
+module easy-to-study/go_study/practice/go_dev
 
 go 1.13
 

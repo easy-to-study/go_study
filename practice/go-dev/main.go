@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 			Number  int
 		}
 		msg.Name = "foo"
-		msg.Message = "これは構造体をJSONで返すためのテストです。"
+		msg.Message = "これは構造体をJSONで返すためのテストですよ。"
 		msg.Number = 1111
 		context.JSON(http.StatusOK, msg)
 	})
