@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    #app_goの中にあるDockerfileの読み込み
+    build: ./app_go
+    container_name: "app_go"
+    tty: true
+    #ホストのディレクトリをコンテナにマウント
+    volumes:
+      - ./app_go/app:/go/src/app
