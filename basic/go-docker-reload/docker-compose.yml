@@ -1,0 +1,12 @@
+# docker-compose.ymlファイルのフォーマットのバージョンを指定
+version: '3'
+# services下にコンテナで作られるサービスを定義
+services:
+  app:
+    build: .
+    # (左)ホストマシンのディレクトリを(右)コンテナのディレクトリにマウント
+    volumes:
+    - ./:/go/src/go-echo-docker-example
+    # 公開するportを指定 (左 ホストマシンのポート, 右 コンテナのポート)
+    ports:
+    - "1323:1323"
