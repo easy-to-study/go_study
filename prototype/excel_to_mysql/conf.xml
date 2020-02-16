@@ -6,7 +6,7 @@
   <SheetName>Sheet1</SheetName>
   <SearchCol>2</SearchCol>
   <TargetCol>0,2,4</TargetCol>
-  <SearchText>神奈川</SearchText>
+  <SearchText>staga</SearchText>
   <ItemIndex>1</ItemIndex>
   <OutPut>outputdata.xlsx</OutPut>
   </List>

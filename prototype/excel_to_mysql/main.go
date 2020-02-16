@@ -7,10 +7,11 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
+
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/tealeg/xlsx" // 実装した設定パッケージの読み込み
-	"github.com/sataga/go_study/qiita/excel/xlsx/sample3/model"
 	"github.com/sataga/go_study/qiita/excel/xlsx/sample3/config"
+	"github.com/sataga/go_study/qiita/excel/xlsx/sample3/model"
+	"github.com/tealeg/xlsx" // 実装した設定パッケージの読み込み
 )
 
 type List struct {
@@ -43,14 +44,15 @@ func outputData(row *xlsx.Row, newsheet *xlsx.Sheet, r int) {
 	fmt.Println(targetColArray)
 	i := 0
 	j := 0
-	fmt.Println(r)
+	fmt.Printf("r= %v , i= %v , j = %v \n", r, i, j)
 	for _, cell := range row.Cells {
-		fmt.Println(i)
-
+		fmt.Printf("cell is %v \n", cell)
 		for _, targetCol := range targetColArray {
+			fmt.Printf("r= %v , i= %v , j = %v \n", r, i, j)
 			toInt, _ := strconv.Atoi(targetCol)
 			if i == toInt {
 				text := cell.String()
+				fmt.Println(text)
 				newsheet.Cell(r, j).Value = text
 				j++
 			}
@@ -86,27 +88,25 @@ func main() {
 		fmt.Println("データベース接続成功！")
 	}
 
-	// INSERTの実行
-    id, err := model.InsertUser("USER-0001", "山田 hoge郎", "pass", db)
-    if err != nil {
-        fmt.Println(err.Error())
-    }
-    fmt.Printf("登録されたユーザのIDは【%d】です。\n", id)
- 
-    // SELECTの実行
-    user, err := model.SelectUserById(id, db)
-    if err != nil {
-        fmt.Println(err.Error())
-    }
-    fmt.Printf("SELECTされたユーザ情報は以下の通りです。\n")
-    fmt.Printf("[ID] %s\n", user.Id)
-    fmt.Printf("[アカウント] %s\n", user.Account)
-    fmt.Printf("[名前] %s\n", user.Name)
-    fmt.Printf("[パスワード] %s\n", user.Passwd)
-    fmt.Printf("[登録日] %s\n", user.Created)
-}
+	// // INSERTの実行
+	// id, err := model.InsertUser("USER-0001", "山田 hoge郎", "pass", db)
+	// if err != nil {
+	//     fmt.Println(err.Error())
+	// }
+	// fmt.Printf("登録されたユーザのIDは【%d】です。\n", id)
 
-func test() {
+	// SELECTの実行
+	user, err := model.SelectUserById(1, db)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Printf("SELECTされたユーザ情報は以下の通りです。\n")
+	fmt.Printf("[ID] %s\n", user.Id)
+	fmt.Printf("[アカウント] %s\n", user.Account)
+	fmt.Printf("[名前] %s\n", user.Name)
+	fmt.Printf("[パスワード] %s\n", user.Passwd)
+	fmt.Printf("[登録日] %s\n", user.Created)
+
 	//パラメーターをxmlファイルから取得する
 	getConf()
 
