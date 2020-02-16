@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResultSet>
+  <List>
+  <FileName>inputdata.xlsx</FileName>
+  <StartRow>2</StartRow>
+  <SheetName>Sheet1</SheetName>
+  <SearchCol>2</SearchCol>
+  <TargetCol>0,2,4</TargetCol>
+  <ItemIndex>1</ItemIndex>
+  <OutPut>outputdata.xlsx</OutPut>
+  </List>
+</ResultSet>
