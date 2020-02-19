@@ -46,8 +46,11 @@ func main() {
 
 	for i := 1; i <= listLen; i++ {
 		iStr := strconv.Itoa(i)
-		page.Find(" #target > option:nth-child(" + iStr + ")").Click() // セレクタの属性（ここではoption）のバリューで繰り返しクリックする
-		time.Sleep(2 * time.Second)                                    //適宜ブラウザが反応するための間を取る
+		page.Find(" #target > option:nth-child(" + iStr + ")").Click()          // セレクタの属性（ここではoption）のバリューで繰り返しクリックする
+		tmp, _ := page.Find(" #target > option:nth-child(" + iStr + ")").Text() //
+		fmt.Println(tmp)
+
+		time.Sleep(2 * time.Second) //適宜ブラウザが反応するための間を取る
 
 		curContentsDom, err := page.HTML()
 		if err != nil {
@@ -57,18 +60,16 @@ func main() {
 		readerCurContents := strings.NewReader(curContentsDom)
 		contentsDom, _ := goquery.NewDocumentFromReader(readerCurContents) // ページ内容が変化しているので再取得
 
-		contentsDom.Find("#target").Each(func(_ int, s *goquery.Selection) { // 繰り返し取得したい部分までのセレクタを入れる
-			data := s.Find("option").Text()          // テキスト要素を取得したい場合
-			link, _ := s.Find("option").Attr("href") // アンカーリンク要素を取得したい場合
-			alt, _ := s.Find("option").Attr("alt")   // alt要素を取得したい場合
+		contentsDom.Find("#target > option ").Each(func(_ int, s *goquery.Selection) { // 繰り返し取得したい部分までのセレクタを入れる
+			data := s.Text() // テキスト要素を取得したい場合
+			// link, _ := s.Find("option").Attr("href") // アンカーリンク要素を取得したい場合
+			// alt, _ := s.Find("option").Attr("alt")   // alt要素を取得したい場合
 			fmt.Println(data)
-			fmt.Println(link)
-			fmt.Println(alt)
-			time.Sleep(1 * time.Second) //サーバに負荷を与えないように。
+			time.Sleep(time.Second * 1) //サーバに負荷を与えないように。
 		})
 	}
 
 	// 表示確認するために待たせる
-	time.Sleep(time.Second * 10)
+	time.Sleep(time.Second * 5)
 
 }
