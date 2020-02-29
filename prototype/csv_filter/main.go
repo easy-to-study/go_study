@@ -101,40 +101,54 @@ func outputData(row *xlsx.Row, newsheet *xlsx.Sheet, r int) {
 	fmt.Println(targetColArray)
 	i := 0
 	j := 0
+	inputdata := [5]string{}
+	skip := false
+	fmt.Println(inputdata)
 	for _, cell := range row.Cells {
-		fmt.Printf("r=%v / cell=%v \n", r, cell)
+		// fmt.Printf("r=%v / cell=%v \n", r, cell)
+		skip = false
+		fmt.Printf("skip = %v \n", skip)
 		for _, targetCol := range targetColArray {
 			toInt, _ := strconv.Atoi(targetCol)
-			fmt.Printf("targetCol=%v / i=%v , j=%v \n", targetCol, i, j)
+			// fmt.Printf("targetCol=%v / i=%v , j=%v \n", targetCol, i, j)
 			text := cell.String()
 			if i == toInt {
 				switch i {
 				case 0:
-					if text != "stg" {
-						newsheet.Cell(r, j).Value = text
+					if text == "stg" {
+						skip = true
+					} else {
+						inputdata[j] = text
 					}
 					j++
 				case 2:
 					if text == "kaihatsu" || text == "verify" {
+						skip = true
 					} else {
-						newsheet.Cell(r, j).Value = text
+						inputdata[j] = text
 					}
 					j++
 				case 4:
 					if text == "TRUE" {
-						newsheet.Cell(r, j).Value = "有"
-					} else if text == "FALSE" {
-						newsheet.Cell(r, j).Value = "無"
+						inputdata[j] = "有"
 					} else {
-						newsheet.Cell(r, j).Value = text
+						inputdata[j] = "無"
 					}
 					j++
 				default:
 					fmt.Println("column=other")
 				}
-
 			}
 		}
 		i++
 	}
+	fmt.Printf("skip = %v \n", skip)
+	if !skip {
+		for k := 0; k < len(targetColArray); k++ {
+			fmt.Printf("newsheet.MaxRow = %v \n", newsheet.MaxRow)
+			fmt.Printf("k = %v \n", k)
+			newsheet.Cell(r, k).Value = inputdata[k]
+		}
+	}
+	fmt.Println(inputdata)
 }
