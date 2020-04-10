@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	if Question("今日は元気ですか？[y/n] ") {
+	if Question("今日は元気ですか？[y/n] \n") {
 		fmt.Println("そうですか、頑張ってください！")
 	} else {
 		fmt.Println("元気出してくださいね！")
