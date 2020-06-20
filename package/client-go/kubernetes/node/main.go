@@ -38,4 +38,15 @@ func main() {
 	for i, node := range nodes.Items {
 		fmt.Printf("[%d] %s\n", i, node.GetName())
 	}
+
+	pods, err := clientset.CoreV1().Pods("").List(metav1.ListOptions{})
+	if err != nil {
+		log.Fatalln("failed to get pods:", err)
+	}
+
+	// print pods
+	// pods.Items: []v1.Pod
+	for i, pod := range pods.Items {
+		fmt.Printf("[%d] %s\n", i, pod.GetName())
+	}
 }
